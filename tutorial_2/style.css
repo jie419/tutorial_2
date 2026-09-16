@@ -9,7 +9,7 @@
    =========================================== */
 
 /* External font - add your choice from Google Fonts, Inter will not be graded */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Valley+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet');
 
 :root {
   /* Spacing scale */
@@ -26,6 +26,7 @@
   --color-text-muted: hsl(210, 10%, 50%);
   --color-accent: hsl(220, 80%, 50%);
   --color-border: hsla(210, 10%, 20%, 0.1);
+  --color-image-bg: hsl(210, 10%, 85%);
   
   /* Typography */
   --font-body: 'Inter', system-ui, sans-serif;
@@ -61,6 +62,13 @@ body {
   /* YOUR CODE: grid-template-areas */
   /* YOUR CODE: grid-template-columns */
   /* YOUR CODE: grid-template-rows */
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 2fr 1fr;
+   grid-template-areas:
+    "header header header header"
+    "hero hero hero hero"
+    "list list list list"
+    "footer footer footer footer";
   min-height: 100vh;
   gap: var(--spacing-md);
 }
@@ -73,6 +81,7 @@ body {
 
 .site-header {
   /* YOUR CODE: grid-area */
+  grid-area: header;
   background: var(--color-surface);
   padding: var(--spacing-md) var(--spacing-lg);
   border-bottom: 1px solid var(--color-border);
@@ -80,16 +89,22 @@ body {
 
 .hero-section {
   /* YOUR CODE: grid-area */
+  grid-area: hero;
   padding: var(--spacing-xl);
 }
 
 .list-section {
   /* YOUR CODE: grid-area */
+  grid-area: list;
+  display: flex;
+  flex-wrap: wrap;
   padding: var(--spacing-lg);
+  gap: var(--spacing-md);
 }
 
 .site-footer {
   /* YOUR CODE: grid-area */
+  grid-area: footer;
   background: var(--color-text);
   color: var(--color-bg);
   padding: var(--spacing-lg);
@@ -104,6 +119,7 @@ body {
 
 .header-nav {
   display: flex;
+  flex-direction: row;
   justify-content: space-between;
   align-items: center;
 }
@@ -118,6 +134,9 @@ body {
 /* Make list items flow horizontally on large screens */
 .list-section {
   /* YOUR CODE: display flex, gap, wrap behavior */
+  display: flex;
+  gap: var(--spacing-md);
+  flex-wrap: wrap;
 }
 
 .list-item {
@@ -125,7 +144,176 @@ body {
   padding: var(--spacing-lg);
   border-radius: 0.5rem;
   border: 1px solid var(--color-border);
+  flex-basis: calc(33.33% - var(--spacing-md));
   /* YOUR CODE: flex-basis or width for sizing */
+}
+
+.card-top{
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  grid-template-rows: auto auto;
+  padding: var(--spacing-md);
+  gap: var(--spacing-md);
+  grid-template-areas:
+    "image text"
+    "image content";
+}
+
+.card-top-container{
+  grid-area: text;
+  display: flex;
+  justify-content: space-between;
+  gap: var(--spacing-md);
+}
+.top-image{
+  grid-area: image;
+  width: 96px;
+  height: 96px;
+  background: var(--color-image-bg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.fa-image{
+  font-size: 5.5rem;
+}
+
+.card-top-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.card-title {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  line-height: 1;
+  font-weight: 500;
+  margin-bottom: var(--spacing-xs);
+}
+
+.card-date {
+  font-size: 0.8rem;
+  line-height: 0.8;
+  font-weight: 300;
+  color: var(--color-text-muted);
+}
+
+.content-text{
+  grid-area: content;
+  font-size: 1rem;
+  line-height: 1;
+  font-weight: 400;
+  color: var(--color-text);
+}
+
+.author {
+  display:flex;
+  align-items: flex-start;
+  padding: var(--spacing-md);
+  gap: var(--spacing-md);
+}
+
+.author-image {
+  width: 16px;
+  height: 16px;
+  background: var(--color-image-bg);
+  border: 1px solid var(--color-border);
+  border-radius: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.fa-user {
+font-size: 0.7rem;
+}
+
+.author-name {
+  font-size: 0.75rem;
+  line-height: 1;
+  font-weight: 300;
+  color: var(--color-text);
+}
+
+.card-bottom {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: var(--spacing-md);
+  gap: var(--spacing-md);
+}
+
+.comment {
+  font-size: 0.75rem;
+  display: flex;
+  align-items: center;
+}
+
+.comment-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 16px;
+  margin-right: var(--spacing-xs);
+}
+
+.fa-comment{
+  font-size: 1rem;
+}
+
+.comment-count {
+  font-size: 0.75rem;
+  line-height: 1;
+  font-weight: 300;
+  color: var(--color-text);
+}
+
+.like {
+  font-size: 0.75rem;
+  display: flex;
+  align-items: center;
+}
+
+.like-icon {
+  width: 18px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: var(--spacing-xs);
+}
+
+.fa-heart{
+  font-size: 1rem;
+}
+
+.saves {
+  font-size: 0.75rem;
+  display: flex;
+  align-items: center;
+}
+
+.saves-icon {
+  width: 18px;
+  height: 16px;
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: var(--spacing-xs);
+}
+
+.fa-bookmark{
+  font-size: 1rem;
+}
+
+
+.saves-count {
+  font-size: 0.75rem;
+  line-height: 1;
+  font-weight: 300;
+  color: var(--color-text);
 }
 
 /* ===========================================
@@ -140,14 +328,27 @@ body {
   .page-layout {
     /* YOUR CODE: redefine grid-template-areas */
     /* YOUR CODE: single column layout */
+  grid-template-columns: auto;
+  grid-template-rows: auto auto auto auto;
+  padding: var(--spacing-md);
+  gap: var(--spacing-md);
+  grid-template-areas:
+    "header"
+    "hero"
+    "list"
+    "footer";
   }
   
   .list-section {
-    /* YOUR CODE: change flex-direction if needed */
+    /* YOUR CODE: change flex-direction if needed */  
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap; 
   }
   
   .list-item {
     /* YOUR CODE: full width on mobile */
+    flex-basis: auto;
   }
 }
 
